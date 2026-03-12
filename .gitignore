@@ -1,0 +1,92 @@
+# Dependencies
+node_modules/
+
+# Environment variables
+.env
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build output
+dist/
+build/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Testing
+coverage/
+
+# TypeScript
+*.tsbuildinfo
+
+# Optional dependencies
+.pnp
+.pnp.js
+
+# Optional config
+.eslintcache
+.prettiercache
+
+# Optional build artifacts
+*.log
+*.tmp
+*.temp
+*.cache
+*.lock
+*.pid
+*.seed
+*.pid.lock
+*.seed.lock
+*.pid.lock.lock
+*.seed.lock.lock
+*.pid.lock.lock.lock
+*.seed.lock.lock.lock
+*.pid.lock.lock.lock.lock
+*.seed.lock.lock.lock.lock
+*.pid.lock.lock.lock.lock.lock
+*.seed.lock.lock.lock.lock.lock.lock
+*.pid.lock.lock.lock.lock.lock.lock.lock
+*.seed.lock.lock.lock.lock.lock.lock.lock.lock
+*.pid.lock.lock.lock.lock.lock.lock.lock.lock.lock
+*.seed.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock
+*.pid.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock
+*.seed.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock
+*.pid.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock
+*.seed.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock
+*.pid.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock
+*.seed.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock
+*.pid.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock
+*.pid.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock
+*.pid.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock
+*.pid.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock
+*.pid.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock
+*.pid.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock
+*.pid.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock
+*.pid.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock
+*.pid.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock
+*.pid.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock
+*.pid.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock
+*.pid.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock
+*.pid.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock
+*.pid.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock
+*.pid.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock
+*.pid.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock
+*.pid.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock
+*.pid.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock
+*.pid.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock
+*.pid.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock
+*.pid.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock
+*.pid.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock
+*.pid.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock
+*.pid.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock.lock
+*.pid.lock.lock.lock.lock.lock
