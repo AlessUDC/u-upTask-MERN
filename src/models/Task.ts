@@ -11,7 +11,7 @@ const taskStatus = {
 export type TaskStatus = typeof taskStatus[keyof typeof taskStatus]
 
 export type TaskType = {
-    taskName: string,
+    name: string,
     description: string
     project: Types.ObjectId
     status: TaskStatus
