@@ -1,4 +1,4 @@
-import mongoose, { Schema, Types } from "mongoose"
+import mongoose, { Schema, Types, Document } from "mongoose"
 
 const taskStatus = {
     PENDING: 'pending',
@@ -10,7 +10,7 @@ const taskStatus = {
 
 export type TaskStatus = typeof taskStatus[keyof typeof taskStatus]
 
-export type TaskType = {
+export type TaskType = Document & {
     name: string,
     description: string
     project: Types.ObjectId

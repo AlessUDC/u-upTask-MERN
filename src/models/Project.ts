@@ -1,5 +1,5 @@
-import mongoose, { Document, PopulatedDoc, Schema, Types } from "mongoose";
-import { TaskType } from "./Task";
+import mongoose, { Document, PopulatedDoc, Schema, Types } from "mongoose"
+import { TaskType } from "./Task"
 
 export type ProjectType = Document & {
     projectName: string
