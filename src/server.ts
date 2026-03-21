@@ -4,6 +4,7 @@ import { connectDB } from './config/db'
 import projectRoutes from './routes/projectRoutes'
 import cors from 'cors'
 import { corsConfig } from './config/cors'
+import morgan from 'morgan'
 
 dotenv.config()
 
@@ -12,6 +13,9 @@ connectDB()
 
 const app = express()
 app.use(cors(corsConfig))
+
+// Logging
+app.use(morgan('dev'))
 
 // Lectura de JSON
 app.use(express.json())
