@@ -144,4 +144,79 @@ export class AuthController {
             res.status(500).json({ error: 'Error al restablecer la contraseña' })
         }
     }
+
+    static forgotPassword = async (req: Request, res: Response) => {
+        try {
+            // Se le pide al usuario que ingrese su email
+            const { email } = req.body
+
+            // Usuario existe?
+            const user = await User.findOne({ email })
+            if(!user){
+                const error = new Error('Usuario no está registrado')
+                return res.status(404).json({ error: error.message })
+            }
+
+            // No hace falta confirmar usuario porque este ya está logeado(o sea ya confirmó su cuenta)
+            
+            // Eliminar tokens previos
+            await Token.deleteMany({ user: user._id })
+
+            // Generar nuevo token
+            const token = new Token()
+            token.token = generateToken()
+            token.user = user._id
+            await token.save()
+
+            // Enviar email
+            AuthEmail.setPasswordResetToken({
+                email: user.email,
+                name: user.name,
+                token: token.token
+            })
+            res.send(`Revisa tu email para instrucciones para restablecer tu contraseña`)
+        } catch (error) {
+            res.status(500).json({ error: 'Error al restablecer la contraseña' })
+        }
+    }
+
+    static validateToken = async (req: Request, res: Response) => {
+        try {
+            const { token } = req.body
+
+            const tokenExists = await Token.findOne({ token })
+
+            if (!tokenExists) {
+                const error = new Error('Token no válido')
+                return res.status(404).json({ error: error.message })
+            }
+
+            res.send('Token válido, define tu nueva contraseña')
+        } catch (error) {
+            res.status(500).json({ error: 'Error al confirmar la cuenta' })
+        }
+    }
+
+    static updatePasswordWithToken = async (req: Request, res: Response) => {
+        try {
+            const { token } = req.params
+            const { password } = req.body
+
+            const tokenExists = await Token.findOne({ token })
+
+            if (!tokenExists) {
+                const error = new Error('Token no válido')
+                return res.status(404).json({ error: error.message })
+            }
+
+            const user = await User.findById(tokenExists.user)
+            user.password = await hashPassword(password)
+
+            await Promise.allSettled([user.save(), tokenExists.deleteOne()])
+
+            res.send('Contraseña actualizada correctamente')
+        } catch (error) {
+            res.status(500).json({ error: 'Error al actualizar la contraseña' })
+        }
+    }
 }
