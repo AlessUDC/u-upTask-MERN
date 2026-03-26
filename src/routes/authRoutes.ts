@@ -1,6 +1,6 @@
 import { Router } from "express"
 import { AuthController } from "../controllers/AuthController"
-import { body } from "express-validator"
+import { body, param } from "express-validator"
 import { handleInputErrors } from "../middleware/validation"
 
 const router = Router()
@@ -43,6 +43,34 @@ router.post('/request-code',
         .isEmail().withMessage('El email no es válido'),
     handleInputErrors,
     AuthController.requestConfirmationCode
+)
+
+router.post('/forgot-password', 
+    body('email')
+        .isEmail().withMessage('El email no es válido'),
+    handleInputErrors,
+    AuthController.forgotPassword
+)
+
+router.post('/validate-token', 
+    body('token')
+        .notEmpty().withMessage('El token no puede ir vacío'),
+    handleInputErrors,
+    AuthController.validateToken
+)
+
+router.post('/update-password/:token', 
+    param('token').isNumeric( ).withMessage('Token no válido'),
+    body('password')
+        .isLength({ min: 8 }).withMessage('El password debe tener al menos 8 caracteres'),
+    body('password_confirmation').custom((value, { req }) => {
+        if (value !== req.body.password) {
+            throw new Error('Los passwords no coinciden')
+        }
+        return true
+    }),
+    handleInputErrors,
+    AuthController.updatePasswordWithToken
 )
 
 export default router
