@@ -26,4 +26,23 @@ export class AuthEmail {
         })
         console.log('Email enviado', info.messageId)
     }
+    
+    static setPasswordResetToken = async (user: IEmail) => {
+        const info = await transporter.sendMail({
+            from: 'Uptask <admin@uptask.com>',
+            to: user.email,
+            subject: 'Uptask - Reestablece tu password',
+            text: `UpTask - Reestablece tu password`,
+            html: `
+                <p>Hola ${user.name}, has solicitado reestablecer tu password.</p>
+                <p>Visita el siguiente enlace:</p>
+                <a href="${process.env.FRONTEND_URL}/auth/new-password">
+                    Reestablecer Password
+                </a>
+                <p>Ingresa el código <b>${user.token}</b></p>
+                <p>Este código expirará en 10 minutos</p>
+            `
+        })
+        console.log('Email enviado', info.messageId)
+    }
 }
