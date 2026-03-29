@@ -2,6 +2,7 @@ import { Router } from "express"
 import { AuthController } from "../controllers/AuthController"
 import { body, param } from "express-validator"
 import { handleInputErrors } from "../middleware/validation"
+import { authenticate } from "../middleware/auth"
 
 const router = Router()
 
@@ -60,7 +61,7 @@ router.post('/validate-token',
 )
 
 router.post('/update-password/:token', 
-    param('token').isNumeric( ).withMessage('Token no válido'),
+    param('token').isNumeric().withMessage('Token no válido'),
     body('password')
         .isLength({ min: 8 }).withMessage('El password debe tener al menos 8 caracteres'),
     body('password_confirmation').custom((value, { req }) => {
@@ -71,6 +72,12 @@ router.post('/update-password/:token',
     }),
     handleInputErrors,
     AuthController.updatePasswordWithToken
+)
+
+router.get('/user',
+    // Se trae req.user = user del middleware authenticate para ser usado en el controlador
+    authenticate,
+    AuthController.user
 )
 
 export default router
