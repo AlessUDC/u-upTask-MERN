@@ -5,8 +5,12 @@ import { handleInputErrors } from "../middleware/validation"
 import { TaskController } from "../controllers/TaskController"
 import { projectExists } from "../middleware/project"
 import { taskBelongsToProject, taskExists } from "../middleware/task"
+import { authenticate } from "../middleware/auth"
 
 const router = Router()
+
+// Aplica authenticate a todas las rutas de este archivo
+router.use(authenticate)
 
 router.post('/',
     body('projectName')
