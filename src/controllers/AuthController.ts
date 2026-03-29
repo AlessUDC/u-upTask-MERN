@@ -4,6 +4,7 @@ import { checkPassword, hashPassword } from "../utils/auth"
 import { generateToken } from "../utils/token"
 import Token from "../models/Token"
 import { AuthEmail } from "../emails/AuthEmail"
+import { generateJWT } from "../utils/jwt"
 
 export class AuthController {
     static createAccount = async (req: Request, res: Response) => {
@@ -102,7 +103,10 @@ export class AuthController {
                 const error = new Error('Password incorrecto')
                 return res.status(401).json({ error: error.message })
             }
-            res.send('Login exitoso')
+
+            const token = generateJWT({id: user._id})
+            
+            res.send(token)
         } catch (error) {
             res.status(500).json({ error: 'Error al iniciar sesión' })
         }
@@ -218,5 +222,9 @@ export class AuthController {
         } catch (error) {
             res.status(500).json({ error: 'Error al actualizar la contraseña' })
         }
+    }
+
+    static user = async (req: Request, res: Response) => {
+        return res.json(req.user)
     }
 }
