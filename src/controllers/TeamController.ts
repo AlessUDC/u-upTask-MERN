@@ -50,16 +50,16 @@ export class TeamMemberController {
     }
 
     static removeMemberById = async (req: Request, res: Response) => {
-        const { id } = req.body
+        const { userId } = req.params
         const project = req.project
 
         // Comprueba si el usuario NO es miembro del proyecto
-        if (!project.team.some(team => team.toString() === id)) {
+        if (!project.team.some(team => team.toString() === userId)) {
             const error = new Error('El usuario no es miembro del proyecto')
             return res.status(409).json({ error: error.message })
         }
 
-        project.team = project.team.filter( teamMember => teamMember.toString() !== id.toString() )
+        project.team = project.team.filter( teamMember => teamMember.toString() !== userId )
 
         await project.save()
 
