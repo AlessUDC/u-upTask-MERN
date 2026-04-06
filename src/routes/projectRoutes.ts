@@ -32,8 +32,11 @@ router.get('/:id',
     ProjectController.getProjectById
 )
 
-router.put('/:id',
-    param('id').isMongoId().withMessage('ID no válido'),
+// A todos los ednpoints con 'projectId' se le aplica la validateProjectExists
+router.param('projectId', projectExists)
+
+router.put('/:projectId',
+    param('projectId').isMongoId().withMessage('ID no válido'),
     body('projectName')
         .notEmpty().withMessage('El Nombre Del Proyecto Es Obligatorio'),
     body('clientName')
@@ -41,19 +44,18 @@ router.put('/:id',
     body('description')
         .notEmpty().withMessage('La Descripción Es Obligatoria'),
     handleInputErrors,
+    hasAuthorization,
     ProjectController.updateProject
 )
 
-router.delete('/:id',
-    param('id').isMongoId().withMessage('ID no válido'),
+router.delete('/:projectId',
+    param('projectId').isMongoId().withMessage('ID no válido'),
     handleInputErrors,
+    hasAuthorization,
     ProjectController.deleteProject
 )
 
 // ---- Routes para tareas(tareas dependen de proyectos) ----
-
-// A todos los ednpoints con 'projectId' se le aplica la validateProjectExists
-router.param('projectId', projectExists)
 
 router.post('/:projectId/tasks',
     hasAuthorization,

@@ -48,43 +48,19 @@ export class ProjectController {
         }
     }
     static updateProject = async (req: Request, res: Response) => {
-        const { id } = req.params
         try {
-            const project = await Project.findById(id)
-
-            if (!project) {
-                const error = new Error('Proyecto no encontrado')
-                return res.status(404).json({ error: error.message })
-            }
-            if(project.manager.toString() !== req.user._id.toString()) {
-                const error = new Error('Solo el manager puede editar el proyecto')
-                return res.status(403).json({ error: error.message })
-            }
-
-            project.clientName = req.body.clientName
-            project.description = req.body.description
-            project.projectName = req.body.projectName
-            await project.save()
+            req.project.clientName = req.body.clientName
+            req.project.description = req.body.description
+            req.project.projectName = req.body.projectName
+            await req.project.save()
             res.send('Proyecto Actualizado Correctamente')
         } catch (error) {
             res.status(500).json({ error: 'Hubo un error' })
         }
     }
     static deleteProject = async (req: Request, res: Response) => {
-        const { id } = req.params
         try {
-            const project = await Project.findById(id)
-
-            if (!project) {
-                const error = new Error('Proyecto no encontrado')
-                return res.status(404).json({ error: error.message })
-            }
-            if(project.manager.toString() !== req.user._id.toString()) {
-                const error = new Error('Solo el manager puede eliminar el proyecto')
-                return res.status(403).json({ error: error.message })
-            }
-
-            await project.deleteOne()
+            await req.project.deleteOne()
             res.send('Proyecto Eliminado Correctamente')
         } catch (error) {
             res.status(500).json({ error: 'Hubo un error' })
